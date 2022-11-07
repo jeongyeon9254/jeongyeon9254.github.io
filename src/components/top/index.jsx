@@ -8,10 +8,12 @@ export const Top = ({ title, location, rootPath }) => {
   const isRoot = location.pathname === rootPath
   return (
     <div className="top">
-      <Link to={`/`} className="link">
-        {title}
-      </Link>
-      <GitHubIcon />
+      {!isRoot && (
+        <Link to={`/`} className="link">
+          {title}
+        </Link>
+      )}
+      {/* <GitHubIcon /> */}
     </div>
   )
 }

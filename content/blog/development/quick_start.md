@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start'
+title: 'Quick 시간'
 date: 2020-07-05 17:21:13
 category: 'development'
 draft: false

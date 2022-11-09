@@ -30,6 +30,7 @@ export const Bio = forwardRef((props, ref) => {
                   </Link>
                   <div className="author-introduction">{introduction}</div>
                   <p className="author-socials">
+                    <a href={`https://jeongyeon9254.github.io/about`}>Resume</a>
                     {social.instagram && (
                       <a href={`https://www.instagram.com/${social.instagram}`}>
                         Instagram

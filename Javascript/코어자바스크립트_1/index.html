@@ -68,11 +68,9 @@
 <p>자바스크립트 데이터에는 2가지 타입이 있습니다.</p>
 <p>기본형 ( Number,String,Boolean,null,undefined,Symbol )<br>
 참조형 ( Array,Function,Date,RegExp,Map,Set )</p>
-<p>그리고 기본형은 할당 및 복제가 되며, 참조형은 참조가 된다고들 알고 있습니다. 저 역시 그렇게 알고 있었죠.</p>
-<p>기본형은 값의 주솟값을, 참조형은 값이 담긴 주솟값들에 묶음을 가리키는 주솟값을 복제한다고 말이죠.</p>
+<p>우리는 기본형은 값의 주솟값을, 참조형은 값이 담긴 주솟값들에 묶음을 가리키는 주솟값을 복제한다고 알고있습니다.</p>
 <p>그런데 처음 배웠을 당시 기본형은 불변성을 가지고, 참조형은 가변성을 가진다는 말이 잘 이해가 되지 않았습니다.</p>
-<p>오히려 반대아니냐고 생각했었죠. 오늘은 그 개념을 정확하게 짚고, 더 나아가 각 데이터타입에 관한 배경지식을 정리해보려 합니다.</p>
-<br>
+<p>오히려 반대아니냐고 생각했었죠. 오늘은 그 개념을 정확하게 짚고, 더 나아가 숫자형 데이터타입에 관한 배경지식을 정리해보려 합니다.</p>
 <h2 id="데이터의-불변성과-가변성에-대해" style="position:relative;"><a href="#%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%9D%98-%EB%B6%88%EB%B3%80%EC%84%B1%EA%B3%BC-%EA%B0%80%EB%B3%80%EC%84%B1%EC%97%90-%EB%8C%80%ED%95%B4" aria-label="데이터의 불변성과 가변성에 대해 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>데이터의 불변성과 가변성에 대해</h2>
 <p>자 먼저 변수에 값을 할당해봅니다.</p>
 <div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">var</span> num <span class="token operator">=</span> <span class="token number">1</span></code></pre></div>
@@ -91,7 +89,10 @@ num이라는 변수는 <span class="token number">10</span>번방 그대로입�
 
 그리고 <span class="token number">10</span>번방은 이제 새로운 <span class="token number">21</span>번방과 연결됬습니다<span class="token punctuation">.</span>
 
-즉 변수가 바라보고 있는 데이터의 입장에서는 새로운 데이터가 변수와 연결되려면 새로운 방을 연결해야합니다<span class="token punctuation">.</span> 절대 자기자신이 변경될수는 없습니다<span class="token punctuation">.</span></code></pre></div>
+즉 변수가 바라보고 있는 데이터의 입장에서는
+새로운 데이터가 변수와 연결되려면
+새로운 방을 연결해야합니다<span class="token punctuation">.</span>
+절대 자기자신이 변경될수는 없습니다<span class="token punctuation">.</span></code></pre></div>
 <p>이것을 보고 기본형 데이터는 불변성을 띈다고 합니다.</p>
 <p>이걸보면 결국 데이터를 새로 선언하면 새로운 방에 저장이 되며, 결국 다 불변성을 띄는거 아니냐고 생각할수 있습니다.
 제가 그렇게 생각했으니까요.</p>
@@ -120,27 +121,29 @@ num_2이라는 <span class="token function">key</span><span class="token punctua
 <span class="token number">3</span>의 데이터를 <span class="token number">32</span>번방에 저장하며<span class="token punctuation">,</span>
 <span class="token number">20</span>번방은 <span class="token number">32</span>번방과 새로 연결된것이 됩니다<span class="token punctuation">.</span>
 
-즉 객체가 바라보고 있는 <span class="token function">데이터</span><span class="token punctuation">(</span>변수<span class="token punctuation">)</span>의 입장에서는 객체와 연결된채로 자기자신의 값을 바꾸는 것이 가능합니다<span class="token punctuation">.</span> 그저 새로운 값의 방만 연결할 뿐입니다<span class="token punctuation">.</span></code></pre></div>
+즉 객체가 바라보고 있는 <span class="token function">데이터</span><span class="token punctuation">(</span>변수<span class="token punctuation">)</span>의 입장에서는
+객체와 연결된채로 자기자신의 값을 바꾸는 것이
+가능합니다<span class="token punctuation">.</span> 그저 새로운 값의 방만 연결할 뿐입니다<span class="token punctuation">.</span></code></pre></div>
 <p>이것을 보고 참조형 데이터는 불변성을 띈다라고 합니다.<br>
 아직도 많은것을 모르지만 이젠 적어도 자바스크립트에서 변수를 선언할때 최소한 어떤식으로 선언되는지는 알게됬습니다.</p>
-<br>
 <h2 id="0과1-그리고-9223372036854775807" style="position:relative;"><a href="#0%EA%B3%BC1-%EA%B7%B8%EB%A6%AC%EA%B3%A0-9223372036854775807" aria-label="0과1 그리고 9223372036854775807 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>0과1 그리고 9223372036854775807</h2>
 <p>컴퓨터는 0과1의 세계라고 합니다.<br>
 그 0과1만을 표현할수 있는 하나의 메모리 조각을 비트라고 합니다.</p>
 <p>이런 비트를 8개 묶어 표현하는것을 1바이트라고 합니다. 1바이트는 총 256개(2^8)의 값을 표현할수 있습니다.</p>
-<p>옛날에는 하나의 데이터에 몇개의 바이트로 표현할것인가에 대해 개발자가 직접 할당을 했지만, 현대에서는 많은 메모리 제약이 사라졌고, 이 때문에 자바스크립트 내에서 숫자의 경우 정수형인지, 부동소수형인지 구분하지 않고 8바이트를 확보하고 있습니다.</p>
+<p>옛날에는 하나의 데이터에 몇개의 바이트로 표현할것인가에 대해 개발자가 직접 할당을 했지만, 현대에서는 많은 메모리 제약이 사라졌고, 이 덕분에 자바스크립트 내에서 숫자의 경우 정수형인지, 부동소수형인지 구분하지 않고 8바이트를 확보할 수 있게 되었습니다.</p>
+<p>그런데 8바이트를 확보하고 있다는 말은 결국 저장할수 있는 숫자의 범위가 한정적이라는 뜻입니다.</p>
 <p>이게 무슨말이냐면 직접 변수에 큰 숫자를 넣어보면 됩니다.</p>
 <div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> maxNum <span class="token operator">=</span> <span class="token number">9223372036854775807</span><span class="token punctuation">;</span>
 
 콘솔로그를 찍어보자<span class="token operator">!</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>maxNum<span class="token punctuation">)</span>  <span class="token comment">// 9223372036854776000</span></code></pre></div>
 <p>자 숫자가 정확하게 표현되지 않았습니다.<br>
-그리고 친절하게 왜인지 알려주기까지 합니다.</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">절대값이 2^53보다 크거나 같은 숫자 리터럴은 너무 커서 정수로 정확하게 표시할 수 없습니다.</code></pre></div>
-<p>우리는 아까 자바스크립트는 기본적으로 8바이트를 확보하고 있다고 알게됬습니다.</p>
-<p>즉 2^64까지의 값만 변수에 넣을수 있는것이죠.<br>
-그런데 에러를 보면 2^53과 같거나 큰 숫자라고 합니다.<br>
-너무 억울하죠. 내가 쓰지도 않는 나머지는 어디로 갔을까요?</p>
+그리고 친절하게 왜 안되는지 알려주기까지 합니다.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">절대값이 2^53보다 크거나 같은 숫자 리터럴은
+너무 커서 정수로 정확하게 표시할 수 없습니다.</code></pre></div>
+<p>우리는 아까 자바스크립트는 숫자에 대해서는 기본적으로 8바이트를 확보하고 있다고 알게됬습니다.</p>
+<p>즉 2^64까지의 값만 변수에 넣을수 있는것이죠. 그런데 에러를 보면 2^53과 같거나 큰 숫자라고 합니다. 너무 억울하죠. 내가 쓰지도 않는 나머지는 어디로 갔을까요?</p>
+<h2 id="숫자는-무한하지-그래서-bigint" style="position:relative;"><a href="#%EC%88%AB%EC%9E%90%EB%8A%94-%EB%AC%B4%ED%95%9C%ED%95%98%EC%A7%80-%EA%B7%B8%EB%9E%98%EC%84%9C-bigint" aria-label="숫자는 무한하지 그래서 bigint permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>숫자는 무한하지 그래서 BigInt</h2>
 <p>이것을 알기 위해 조금 돌아가보면.. 우리세상에 숫자는 크게 2가지 타입이 있습니다. 실수와 정수입니다. 우리 세상에 모든숫자는 실수로 나타낼수 있으며, 정수는 실수의 부분집합입니다.</p>
 <p>그런데 사실 실생활에서는 정수를 더 많이 사용하기도 하고, 그토록 많은 (사실상 무한에 가까운) 실수를 모두 데이터안에 담기에는 한계가 있는것이 자명했습니다.</p>
 <p>그렇기에 정확도를 낮추는 대신 표현할수 있는 범위를 늘리기로 합니다. 그 결과 64비트를 쪼개어 가수, 지수, 부호로 나누었으며 우리가 정확하고 안전하게 표현할수 있는 숫자는 2^53까지라고 합니다.<br>
@@ -161,4 +164,4 @@ console<span class="token punctuation">.</span><span class="token function">log<
 /static/2c3576ca549551a0a6e46071c2ba7125/e7bd6/profile.png 1.5x,
 /static/2c3576ca549551a0a6e46071c2ba7125/a12fc/profile.png 2x" /><img loading="lazy" width="72" height="72" srcset="/static/2c3576ca549551a0a6e46071c2ba7125/e5b88/profile.png 1x,
 /static/2c3576ca549551a0a6e46071c2ba7125/e7bd6/profile.png 1.5x,
-/static/2c3576ca549551a0a6e46071c2ba7125/a12fc/profile.png 2x" src="/static/2c3576ca549551a0a6e46071c2ba7125/e5b88/profile.png" alt="JeongYeonJae" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><div class="author-name"><span class="author-name-prefix">Written by</span><a class="author-name-content" href="/about"><span>@<!-- -->JeongYeonJae</span></a><div class="author-introduction">한걸음씩 천천히 나아가자</div><p class="author-socials"><a href="https://jeongyeon9254.github.io/about">Resume</a><a href="https://github.com/jeongyeon9254">GitHub</a></p></div></div></div></div><ul class="navigator"><li><a rel="prev" href="/Javascript/Bigint/">← <!-- -->JS 키워드 [BigInt]</a></li><li><a rel="next" href="/Math/소수점 계산 오류/">자바스크립트 소수점 계산 오류<!-- --> →</a></li></ul><div class="utterances"></div><footer class="footer">©<a href="https://github.com/JaeYeopHan">Jbee</a>, Built with<!-- --> <a href="https://github.com/JaeYeopHan/gatsby-starter-bee">Gatsby-starter-bee</a></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/Javascript/코어자바스크립트_1/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-16c65e5e272855ed2b2b.js"],"component---node-modules-gatsby-plugin-offline-app-shell-js":["/component---node-modules-gatsby-plugin-offline-app-shell-js-38fe08ef875e5952d5f0.js"],"component---src-templates-blog-post-js":["/component---src-templates-blog-post-js-28b69d9c313ca395a685.js"],"component---src-pages-404-js":["/component---src-pages-404-js-ab1d14d8fe8d5f781253.js"],"component---src-pages-about-js":["/component---src-pages-about-js-f43a9b41ff18f6404175.js"],"component---src-pages-index-js":["/component---src-pages-index-js-1b1461cba97598566283.js"]};/*]]>*/</script><script src="/component---src-templates-blog-post-js-28b69d9c313ca395a685.js" async=""></script><script src="/69ca9dfa785447e3d8b116b383997bcdc8df623a-6c18927ed8ee2f4c74d7.js" async=""></script><script src="/4213a708e3c149581c4f5e97d71bfc3d00067ec6-d8e2ef6339c1ff0e1e49.js" async=""></script><script src="/428cc97b99dda93b6f894a0194db3c3a0ab8bbd5-b9cdbc495dc2d8ef3640.js" async=""></script><script src="/styles-9605c3fbd8ad08ecf405.js" async=""></script><script src="/app-16c65e5e272855ed2b2b.js" async=""></script><script src="/framework-727eca7a674e10b21a9f.js" async=""></script><script src="/webpack-runtime-3941626b6d941b4dc540.js" async=""></script></body></html>
+/static/2c3576ca549551a0a6e46071c2ba7125/a12fc/profile.png 2x" src="/static/2c3576ca549551a0a6e46071c2ba7125/e5b88/profile.png" alt="JeongYeonJae" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><div class="author-name"><span class="author-name-prefix">Written by</span><a class="author-name-content" href="/about"><span>@<!-- -->JeongYeonJae</span></a><div class="author-introduction">한걸음씩 천천히 나아가자</div><p class="author-socials"><a href="https://jeongyeon9254.github.io/about">Resume</a><a href="https://github.com/jeongyeon9254">GitHub</a></p></div></div></div></div><ul class="navigator"><li></li><li></li></ul><div class="utterances"></div><footer class="footer">©<a href="https://github.com/JaeYeopHan">Jbee</a>, Built with<!-- --> <a href="https://github.com/JaeYeopHan/gatsby-starter-bee">Gatsby-starter-bee</a></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/Javascript/코어자바스크립트_1/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-16c65e5e272855ed2b2b.js"],"component---node-modules-gatsby-plugin-offline-app-shell-js":["/component---node-modules-gatsby-plugin-offline-app-shell-js-38fe08ef875e5952d5f0.js"],"component---src-templates-blog-post-js":["/component---src-templates-blog-post-js-28b69d9c313ca395a685.js"],"component---src-pages-404-js":["/component---src-pages-404-js-ab1d14d8fe8d5f781253.js"],"component---src-pages-about-js":["/component---src-pages-about-js-f43a9b41ff18f6404175.js"],"component---src-pages-index-js":["/component---src-pages-index-js-1b1461cba97598566283.js"]};/*]]>*/</script><script src="/component---src-templates-blog-post-js-28b69d9c313ca395a685.js" async=""></script><script src="/69ca9dfa785447e3d8b116b383997bcdc8df623a-6c18927ed8ee2f4c74d7.js" async=""></script><script src="/4213a708e3c149581c4f5e97d71bfc3d00067ec6-d8e2ef6339c1ff0e1e49.js" async=""></script><script src="/428cc97b99dda93b6f894a0194db3c3a0ab8bbd5-b9cdbc495dc2d8ef3640.js" async=""></script><script src="/styles-9605c3fbd8ad08ecf405.js" async=""></script><script src="/app-16c65e5e272855ed2b2b.js" async=""></script><script src="/framework-727eca7a674e10b21a9f.js" async=""></script><script src="/webpack-runtime-3941626b6d941b4dc540.js" async=""></script></body></html>

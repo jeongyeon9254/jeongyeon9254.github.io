@@ -3,5 +3,23 @@ import React from 'react'
 import './index.scss'
 
 export const PostDate = ({ date }) => {
-  return <p className="post-date">{date}</p>
+  const monthsList = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ]
+  const dates = date.split(' ')
+  const year = dates[2]
+  const month = monthsList.indexOf(dates[0])
+  const day = dates[1].replace(',', '')
+  return <p className="post-date">{`${year}년 ${month}월 ${day}일`}</p>
 }

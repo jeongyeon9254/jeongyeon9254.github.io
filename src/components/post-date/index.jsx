@@ -21,5 +21,5 @@ export const PostDate = ({ date }) => {
   const year = dates[2]
   const month = monthsList.indexOf(dates[0])
   const day = dates[1].replace(',', '')
-  return <p className="post-date">{`${year}년 ${month}월 ${day}일`}</p>
+  return <p className="post-date">{`${year}년 ${month + 1}월 ${day}일`}</p>
 }

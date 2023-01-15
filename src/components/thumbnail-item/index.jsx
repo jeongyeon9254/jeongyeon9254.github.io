@@ -33,7 +33,7 @@ export const ThumbnailItem = ({ node }) => {
         /> */}
         <h3>{node.frontmatter.title || node.fields.slug}</h3>
         <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-        <p>{`${year}년 ${month}월 ${day}일`}</p>
+        <p>{`${year}년 ${month + 1}월 ${day}일`}</p>
       </div>
     </Link>
   )

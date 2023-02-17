@@ -1,0 +1,18 @@
+---
+title: 'fastApi (3)'
+date: 2023-02-10
+category: 'python'
+draft: false
+---
+
+지난번 왜 빠른지에 대해 잠깐 알아보겠습니다.
+
+이후 컨커런시와 비동기에 대한 정의
+
+알아보았으니 비동기 api 콜에대한 부하테스트를 실행해 보겠습니다.
+
+백엔드 태스크와 셀러리 그리고 어싱크 Io
+
+## fastAPI vs django
+
+지난번에 간단한 API 테스트로 fastAPI가 django보다 속도가 빠르다는 결과를 알게 되었습니다.

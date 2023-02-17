@@ -2,7 +2,7 @@ module.exports = {
   title: `Jeong.io`,
   description: `한걸음씩 천천히`,
   author: `JeongYeonJae`,
-  introduction: `이것저것 쓰는 블로그입니다.`,
+  introduction: `이것저것 쓰는 개발블로그`,
   siteUrl: `https://jeongyeon9254.github.io`, // Your blog site url
   social: {
     twitter: ``, // Your Twitter account

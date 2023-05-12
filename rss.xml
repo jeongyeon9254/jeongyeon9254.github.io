@@ -1,4 +1,275 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Jeong.io]]></title><description><![CDATA[한걸음씩 천천히]]></description><link>https://jeongyeon9254.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 14 Apr 2023 05:00:32 GMT</lastBuildDate><item><title><![CDATA[fastApi (3)]]></title><description><![CDATA[fastAPI doc 자습 fastAPI 에 대해 간단하게 알아보았으며, 공식문서를 통해 fastAPI를 배워보겠습니다. 경로 매개변수 매개변수 타입지정 매개변수를 받아 반환할수 있고, 해당 매개변수에 타입을 지정할 수 있습니다. 만약 user/{id…]]></description><link>https://jeongyeon9254.github.io/Python/23.03.30 fastAPI3/</link><guid isPermaLink="false">https://jeongyeon9254.github.io/Python/23.03.30 fastAPI3/</guid><pubDate>Thu, 30 Mar 2023 00:00:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;fastapi-doc-자습&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#fastapi-doc-%EC%9E%90%EC%8A%B5&quot; aria-label=&quot;fastapi doc 자습 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;fastAPI doc 자습&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Jeong.io]]></title><description><![CDATA[한걸음씩 천천히]]></description><link>https://jeongyeon9254.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 12 May 2023 00:45:00 GMT</lastBuildDate><item><title><![CDATA[코어 자바스크립트 (2)]]></title><description><![CDATA[실행 컨텍스트 실행 컨텍스트란 (Execution Context)는 scope, hoisting, this, function, closure…]]></description><link>https://jeongyeon9254.github.io/Javascript/2022.11.19코어자바스크립트_2/</link><guid isPermaLink="false">https://jeongyeon9254.github.io/Javascript/2022.11.19코어자바스크립트_2/</guid><pubDate>Thu, 11 May 2023 00:00:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;실행-컨텍스트&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%8B%A4%ED%96%89-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8&quot; aria-label=&quot;실행 컨텍스트 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;실행 컨텍스트&lt;/h1&gt;
+&lt;p&gt;실행 컨텍스트란 (Execution Context)는 scope, hoisting, this, function, closure 등의 동작원리를 담고 있는 자바스크립트의 핵심원리를 담고있는 내용이라고 합니다.&lt;/p&gt;
+&lt;p&gt;즉 이것은 자바스크립트의 동적언어로서의 성격을 잘 파악할수 있는 개념이라고 할수있으며, 실행 컨텍스트를 이해하지 못한다고 하면 사실상 자바스크립트에 대한 이해도가 낮다고 할수 있습니다.&lt;/p&gt;
+&lt;p&gt;그래서 이 기회에 공부를 해보며, 완벽하진 않아도 ‘아 자바스크립트는 이렇게 실행되는구나!’ 라고 생각이 들정도로는 정리를 해보려 합니다.&lt;/p&gt;
+&lt;br&gt;
+&lt;h2 id=&quot;들어가기-앞서-스택-과-큐&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%93%A4%EC%96%B4%EA%B0%80%EA%B8%B0-%EC%95%9E%EC%84%9C-%EC%8A%A4%ED%83%9D-%EA%B3%BC-%ED%81%90&quot; aria-label=&quot;들어가기 앞서 스택 과 큐 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;들어가기 앞서 스택 과 큐&lt;/h2&gt;
+&lt;p&gt;스택과 큐는 알고리즘 자료구조입니다.&lt;br&gt;
+이는 자바스크립트의 개념이라기보다는 프로그래밍 개념이라고 할수 있겠습니다.&lt;/p&gt;
+&lt;p&gt;완벽하게 아는것은 아니지만 짧게 개념만 공부해보겠습니다.&lt;/p&gt;
+&lt;h3 id=&quot;스택&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%8A%A4%ED%83%9D&quot; aria-label=&quot;스택 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;스택&lt;/h3&gt;
+&lt;p&gt;스택은 바닥이 막힌 원통이라고 생각해보겠습니다.&lt;/p&gt;
+&lt;p&gt;해당 원통형에 물건을 차곡차곡 넣으면 꺼낼때는 위에 있는것부터 꺼내질것입니다. 이렇게 데이터의 입출력을 후입선출 방식입니다.&lt;/p&gt;
+&lt;p&gt;아마 가장 흔하게 만나볼수 있는 스택구조는 winodw.history와 같은 네비게이션 객체이지 않나 싶습니다. 페이지를 이동할때 스택구조에 페이지를 저장할 경우 뒤로가기를 클릭하면 그저 가장 최상단에 있는 페이지로 이동시키기만 하면 되기 때문입니다.&lt;/p&gt;
+&lt;p&gt;참고로 이런 스택은 제한이 있기 때문에 해당 스택을 넘어가는 횟수의 함수호출을 할 경우 에러를 발생시키게 됩니다.&lt;/p&gt;
+&lt;h3 id=&quot;큐&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%81%90&quot; aria-label=&quot;큐 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;큐&lt;/h3&gt;
+&lt;p&gt;큐는 양쪽이 뚫려있는 원통형과 같습니다. 먼저 들어온것이 먼저 나가는 선입선출의 구조로 되어있습니다. 이러한 큐는 입력된 순서대로 데이터를 처리하기 때문에 순서가 정해진 작업을 할 경우 사용할 수 있습니다.&lt;/p&gt;
+&lt;br&gt;
+&lt;h2 id=&quot;자바스크립를-동작하게-하는-것들&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%EB%A5%BC-%EB%8F%99%EC%9E%91%ED%95%98%EA%B2%8C-%ED%95%98%EB%8A%94-%EA%B2%83%EB%93%A4&quot; aria-label=&quot;자바스크립를 동작하게 하는 것들 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;자바스크립를 동작하게 하는 것들&lt;/h2&gt;
+&lt;p&gt;자바스크립트는 제목에서처럼 알수 있듯이 스크립트 언어입니다. 그런데 공부하다보면 항상 마주치는것이 하나있습니다. 바로 ECMAscript, 그러다보니 마치 ES가 자바스크립트 자체라고 오해할수도 있는데, 사실은 ES는 모든 스크립트 언어가 호환될수 있도록 만든 협약같은 것이며, 최근에 자바스크립트는 이런 ES를 기반으로 만들어졌다고 할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;이런 자바스크립트를 웹에서 실행시키기 위해 만들어진것이 자바스크립트 엔진입니다. 각 브라우저마다 엔진의 종류는 다르지만 기본적인 구조는 같습니다.&lt;/p&gt;
+&lt;p&gt;자바스크립트 엔진은 메모리힙과 콜스택구조를 가지고 있으며, 자바스크립트가 실행되면 실행컨텍스트가 콜스택이라는 엔진내에 스택구조에 쌓이게 되고, 역시 한번에 한가지 일을 수행하게 됩니다.&lt;/p&gt;
+&lt;p&gt;여담으로 콜스택구조에는 원시타입 데이터가, 메모리 힙에는 참조타입 데이터가 저장된다고 합니다.&lt;/p&gt;
+&lt;p&gt;하지만 우리는 코딩을하며 비동기적으로 무언가를 실행시켜본 경험이 있을것입니다. 만약 자바스크립트가 한번에 한개의 일밖에 못한다면 어떻게 비동기적으로 일을 처리할수가 있었을까요?&lt;/p&gt;
+&lt;p&gt;그 이유는 브라우저에는 자바스크립트 엔진 외에도 WebAPI, 콜백 큐, 이벤트 루프라는것이 있기 때문입니다.&lt;/p&gt;
+&lt;p&gt;해당 구조들이 어떤역할을 하는지 짧게 알아보겠습니다.&lt;/p&gt;
+&lt;h3 id=&quot;webapi&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#webapi&quot; aria-label=&quot;webapi permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;WebAPi&lt;/h3&gt;
+&lt;p&gt;첫번째로 WebApi는 우리가 사용하는 여러가지 기능들입니다. setinterval이나 domevent같은 이벤트들이 webAPi라고 할수 있으며 자세한 정리는 다음번에 하기로 하고 다음으로 넘어갑니다.&lt;/p&gt;
+&lt;h3 id=&quot;콜백큐&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%BD%9C%EB%B0%B1%ED%81%90&quot; aria-label=&quot;콜백큐 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;콜백큐&lt;/h3&gt;
+&lt;p&gt;두번째인 콜백 큐는 비동기 처리를 하는 함수를 관리하는 친구입니다. 이런 콜백 큐는 ECMA2015에 joq queue라는 개념이 추가되었는데, 이는 웹 API가 아니라 다른 비동기 처리인 프로미스등이 우선권을 가지는 개념입니다.&lt;/p&gt;
+&lt;h3 id=&quot;이벤트-루프&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EB%A3%A8%ED%94%84&quot; aria-label=&quot;이벤트 루프 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;이벤트 루프&lt;/h3&gt;
+&lt;p&gt;세번째인 이벤트 루프는 콜스택이 비어있을때 콜백큐에 있는 함수들을 콜스택으로 보내는 일을 합니다.&lt;/p&gt;
+&lt;p&gt;이런식으로 자바스크립트는 싱글스레드이지만 비동기적 처리를 할수 있게 되었습니다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/content/react/js_1.png&quot; alt=&quot;ex_screenshot&quot;&gt;&lt;/p&gt;
+&lt;br&gt;
+&lt;h2 id=&quot;실행컨텍스트&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%8B%A4%ED%96%89%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8&quot; aria-label=&quot;실행컨텍스트 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;실행컨텍스트&lt;/h2&gt;
+&lt;p&gt;실행 컨텍스트는 &lt;b&gt;실행할 코드에 제공할 환경정보들을 모아놓은 객체&lt;/b&gt;입니다. 동일한 환경에 있는 코드들을 실행할때 필요한 환경정버돌을 모아 컨텍스트를 구성하고, 이를 콜스택에 쌓아올렸다가, 가장 위에 컨텍스트와 관련있는 코드들을 실행하는 식으로 전체코드의 환경과 순서를 보장합니다.&lt;/p&gt;
+&lt;p&gt;실행 컨텍스트는 자동으로 생성되는 전역공간과 eval()함수를 제외하면, 일반적으로 우리가 실행컨텍스트를 구성하는 방법은 함수를 실행하는것 뿐입니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; a &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// 전역 컨텍스트&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;outer&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;// outer 컨텍스트&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;inner&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token comment&quot;&gt;// inner 컨텍스트&lt;/span&gt;
+    console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;a&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// undefined&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; a &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;
+    console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;a&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// 3&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;inner&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;a&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// 1&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;outer&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;a&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// 1&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;위 코드가 실행된다면 다음과 같은 순서로 실행됩니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;프로그램 실행: [전역컨텍스트]&lt;/p&gt;
+&lt;p&gt;-&gt; 전역컨텍스트가 콜스택에 담깁니다. 자바스크립트가 열리는 순간 활성화됩니다.&lt;/p&gt;
+&lt;p&gt;(실행 컨텍스트와 전역 컨텍스트는 특별히 다를것은 없으나, 전역 컨텍스트의 경우 관리하는 공간이 함수가 아닌 전역공간이기 때문에 arguments가 없습니다.)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;outer 실행: [전역컨텍스트, outer]&lt;/p&gt;
+&lt;p&gt;-&gt; outer함수를 호출하면 관련 환경정보를 수집해 outer 실행컨텍스를 생성한 후 콜스택에 담습니다. 이때 콜스택 최상위에 outer실행컨텍스트가 놓였으므로, 전역 컨텍스트와 관련된 코드의 실행을 중단하고 outer내부함수를 순차적으로 진행합니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;inner 실행: [전역컨텍스트, outer, inner]&lt;/p&gt;
+&lt;p&gt;-&gt; inner를 호출하며 관련정보를 담은 실행 컨텍스트를 콜스택에 담습니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;inner 종료: [전역컨텍스트, outer]&lt;/p&gt;
+&lt;p&gt;-&gt; inner함수를 종료합니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;outer 종료: [전역컨텍스트]&lt;/p&gt;
+&lt;p&gt;-&gt; outer를 2부터 재실행하며, 종료됩니다. 더이상 실행할 코드가 없어 전역컨텍스트도 제거됩니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br&gt;
+&lt;p&gt;다음은 실행컨텍스트를 구성할때 생기는정보들입니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;VariableEnvironment&lt;/p&gt;
+&lt;p&gt;a. 현재 컨텍스트 내의 식별자(변수)들에 대한 정보&lt;/p&gt;
+&lt;p&gt;b. 외부 환경 정보&lt;/p&gt;
+&lt;p&gt;c. 선언 시점의 LexicalEnvironment의 스냅샷(변경사항 반영 X)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;LexicalEnvironment&lt;/p&gt;
+&lt;p&gt;a. 처음에는 VariableEnvironment와 같음&lt;/p&gt;
+&lt;p&gt;b. 변경 사항이 실시간으로 반영됨&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ThisBinding&lt;/p&gt;
+&lt;p&gt;c. 식별자가 바라봐야 할 대상 객체&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br&gt;
+&lt;h2 id=&quot;variable-environment&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#variable-environment&quot; aria-label=&quot;variable environment permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Variable Environment&lt;/h2&gt;
+&lt;p&gt;VariableEnvironment에 담기는 내용은 LexicalEnvironment와 같지만, 최초 실행 시의 스냅샷을 유지합니다. 실행 컨텍스트를 생서할 때 VariableEnvironment에 정보를 먼저 담은 다음, 이를 복사해서 LexicalEnvironment를 만듭니다.&lt;/p&gt;
+&lt;p&gt;주로 활용하는 것은 LexicalEnvironment입니다. 보통 VariableEnviroment는 스냅샷 유지를 목적으로 사용합니다.&lt;/p&gt;
+&lt;h2 id=&quot;lexical-environment&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#lexical-environment&quot; aria-label=&quot;lexical environment permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Lexical Environment&lt;/h2&gt;
+&lt;p&gt;LexicalEnvironment의 내부는 environmentRecord와 outerEnvironmentReference로 구성되어 있습니다.&lt;/p&gt;
+&lt;p&gt;environmentRecord로 인하여 호이스팅이 발생하며, outerEnvironmentReference로 인하여 스코프와 스코프체인이 형성됩니다.&lt;/p&gt;
+&lt;h3 id=&quot;environmentrecord와-hoisting호이스팅&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#environmentrecord%EC%99%80-hoisting%ED%98%B8%EC%9D%B4%EC%8A%A4%ED%8C%85&quot; aria-label=&quot;environmentrecord와 hoisting호이스팅 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;environmentRecord와 Hoisting(호이스팅)&lt;/h3&gt;
+&lt;p&gt;자바스크립트는 코드를 실행하기전에 식별자를 수집합니다.&lt;/p&gt;
+&lt;h4 id=&quot;environmentrecord&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#environmentrecord&quot; aria-label=&quot;environmentrecord permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;environmentRecord&lt;/h4&gt;
+&lt;p&gt;현재 컨텍스트와 관련된 코드의 식별자 정보들이 저장됩니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;매개변수 식별자&lt;/li&gt;
+&lt;li&gt;함수 자체&lt;/li&gt;
+&lt;li&gt;함수 내부의 식별자&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;host-object호스트-객체&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#host-object%ED%98%B8%EC%8A%A4%ED%8A%B8-%EA%B0%9D%EC%B2%B4&quot; aria-label=&quot;host object호스트 객체 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Host Object(호스트 객체)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;전역 실행 컨텍스트는 변수 객체를 생성하는 대신 전역 객체를 활용합니다.&lt;/li&gt;
+&lt;li&gt;브라우저의 Window 객체, Node의 Global 객체 등이 이에 해당됩니다.&lt;/li&gt;
+&lt;li&gt;이들은 Host Object로 분류됩니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br&gt;
+&lt;p&gt;즉, 코드가 실행 되기 전에 자바스크립트의 엔진은 이미 실행 컨텍스트에 속한 변수명들을 모두 알고 있게 됩니다.&lt;/p&gt;
+&lt;p&gt;이 때 호이스팅이란 개념이 이용됩니다.&lt;/p&gt;
+&lt;p&gt;엔진의 실제 동작 방식 대신에 자바스크립트 엔진은 식별자들을 최상단으로 끌어올려놓은 다음, 실제 코드를 실행한다 라고 생각하면 이해하기 좀뎌 편합니다.&lt;/p&gt;
+&lt;p&gt;중요한 점은, 자바스크립트 엔진이 실제로 변수를 끌어올리지는 않지만, 편의상 끌어올리는 것으로 간주하자는 것입니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; x
+  console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; x &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;
+  console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;위 코드의 인자를 함수 내부의 다른코드보다 먼저 선언 및 할당이 되었다고 해석해보겠습니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; x &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// 매개변수 할당&lt;/span&gt;
+  console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; x
+  console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; x &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;
+  console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;그리고 이 코드는 호이스팅 되어 다음과 같이 해석될 수 있습니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; x
+  &lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; x
+  &lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; x
+
+  x &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;
+  console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// 1&lt;/span&gt;
+  console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// 1&lt;/span&gt;
+  x &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;
+  console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// 2&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;위는 변수의 경우이고 함수의 호이스팅은 다음과 같습니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; b &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;bbb&apos;&lt;/span&gt;
+  console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;위 코드에서 함수가 호이스팅이 일어날 경우 함수전체가 호이스팅됩니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; b
+  &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+  console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// f b () {}&lt;/span&gt;
+  b &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;bbb&apos;&lt;/span&gt;
+  console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// bbb&lt;/span&gt;
+  console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// bbb&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;자바스크립트의 함수는 일급객체(혹은 일급시민)이기 때문에 함수 표현식이 가능하다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;일급객체(일급시민)
+
+여기 x라는 것이 있다.
+
+x를 변수에 담을 수 있다.
+x를 매개변수에 넘길 수 있다.
+x를 함수에서 반환할 수 있다.
+x를 만족할 때, 이를 일급객체라고 한다.
+
+즉, 자바스크립트의 함수는 일급객체이므로
+
+함수를 변수에 담을 수 있다.
+함수를 매개변수로 넘길 수 있다.
+함수를 함수에서 반환할 수 있다.
+위의 같은 조건을 만족한다.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;앞의 함수를 표현식으로 변경해보면&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; b &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;bbb&apos;&lt;/span&gt;
+  console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// b에 익명함수를 할당했다.&lt;/span&gt;
+  console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;그리고 다음과 같이 해석될수 있습니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; b
+  &lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; b
+
+  console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// undefined&lt;/span&gt;
+  b &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;bbb&apos;&lt;/span&gt;
+  console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// bbb&lt;/span&gt;
+  &lt;span class=&quot;token function-variable function&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// b에 익명함수를 할당했다.&lt;/span&gt;
+  console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// f () {}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;br&gt;
+&lt;h3 id=&quot;outerenvironmentreference와-scope&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#outerenvironmentreference%EC%99%80-scope&quot; aria-label=&quot;outerenvironmentreference와 scope permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;outerEnvironmentReference와 Scope&lt;/h3&gt;
+&lt;p&gt;스코프란 식별자에 대한 유효범위 입니다. 스코프 A에서 선언한 변수는 A의 내,외부에서 모두 접근이 가능하지만, A에서 선언된 변수는 A내부에서만 접근할수 있습니다.&lt;/p&gt;
+&lt;p&gt;스코프의 개념은 대부분의 언어에 존재하지만, ES5까지의 Javascript는 특이하게도 오직 함수에 의해서만 스코프가 생성되었습니다.&lt;/p&gt;
+&lt;h4 id=&quot;scope-chain&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#scope-chain&quot; aria-label=&quot;scope chain permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;scope chain&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;식별자의 유효범위를 안에서 바깥으로 차례로 검색해나는 것&lt;/li&gt;
+&lt;li&gt;이를 가능하게 하는 것이 outerEnvironmentReference입니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br&gt;
+&lt;p&gt;&lt;b&gt;outerEnvironmentReference는&lt;/b&gt; 현재 호출된 함수가 선언될 당시의 LexicalEnvironment를 참조한다.
+[선언하다] 라는 행위가 실제로 일어날 수 있는 시점은 콜 스택 상에서 어떤 실행 컨텍스트가 활성화된 상태일 때뿐이다.모든 코드는 실행 컨텍스트가 활서화 상태일 때 실행되기 때문이다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; a &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// 전역 컨텍스트&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;outer&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;// outer 컨텍스트&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;inner&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token comment&quot;&gt;// inner 컨텍스트&lt;/span&gt;
+    console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;a&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; a &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;
+    console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;a&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;inner&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// inner가 실행될 때 outer의 LexcicalEnvironemnt를 outerEnvironmentReference로 참조한다.&lt;/span&gt;
+  console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;a&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;outer&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// outer가 실행될 때 전역 컨텍스트의 LexcicalEnvironemnt를 outerEnvironmentReference로 참조한다.&lt;/span&gt;
+console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;a&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;위의 코드는 다음과 같은 scope chain을 형성합니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;inner LexicalEnvironment {
+    식별자 a
+    outerEnvironmentReference = outer LexicalEnvironment {
+            식별자 a
+            outerEnvironmentReference = global LexicalEnvironment {
+                식별자 a
+            }
+        }
+    }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;이러한 구조적 특성 덕분에 여러 스코프에 동일한 식별자를 선언할 경우, 무조건 scope chain 상에서 가장 먼저 발견된 식별자에만 접근 가능하게 됩니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;inner LexicalEnvironment {
+
+    식별자 a        # inner function에서 a에 접근할 때 여기에 가장 먼저 접근
+
+    outerEnvironmentReference = outer LexicalEnvironment {
+
+            식별자 a        # outer function에서 a에 접근할 때 여기에 가장 먼저 접근
+            식별자 b        # inner function에서 b에 접근할 때 여기에 가장 먼저 접근
+
+            outerEnvironmentReference = global LexicalEnvironment {
+
+                식별자 a        # 전역에서 a에 접근할 때 여기에 가장 먼저 접근
+                식별자 b        # 전역에서 b에 접근할 때 여기에 가장 먼저 접근
+                식별자 c        # inner function에서 c에 접근할 때 여기에 가장 먼저 접근
+
+            }
+
+        }
+
+    }
+
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;br&gt;
+&lt;h2 id=&quot;this&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#this&quot; aria-label=&quot;this permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;this&lt;/h2&gt;
+&lt;p&gt;실행 컨텍스트의 thisBinding에는 this로 지정된 객체가 저장된다. this는 여기에 다루기에 복잡한 내용이 많기 때문에 다음 장에서 정확하게 설명하겠습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[fastApi (3)]]></title><description><![CDATA[fastAPI doc 자습 fastAPI 에 대해 간단하게 알아보았으며, 공식문서를 통해 fastAPI를 배워보겠습니다. 경로 매개변수 매개변수 타입지정 매개변수를 받아 반환할수 있고, 해당 매개변수에 타입을 지정할 수 있습니다. 만약 user/{id…]]></description><link>https://jeongyeon9254.github.io/Python/23.03.30 fastAPI3/</link><guid isPermaLink="false">https://jeongyeon9254.github.io/Python/23.03.30 fastAPI3/</guid><pubDate>Thu, 30 Mar 2023 00:00:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;fastapi-doc-자습&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#fastapi-doc-%EC%9E%90%EC%8A%B5&quot; aria-label=&quot;fastapi doc 자습 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;fastAPI doc 자습&lt;/h1&gt;
 &lt;p&gt;fastAPI 에 대해 간단하게 알아보았으며, 공식문서를 통해 fastAPI를 배워보겠습니다.&lt;/p&gt;
 &lt;br&gt;
 &lt;h1 id=&quot;경로-매개변수&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B2%BD%EB%A1%9C-%EB%A7%A4%EA%B0%9C%EB%B3%80%EC%88%98&quot; aria-label=&quot;경로 매개변수 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;경로 매개변수&lt;/h1&gt;
@@ -1773,41 +2044,7 @@ centos       latest    5d0da3dc9764   14 months ago   231MB&lt;/code&gt;&lt;/pre
 &lt;br&gt;
 &lt;h2 id=&quot;후기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%9B%84%EA%B8%B0&quot; aria-label=&quot;후기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;후기&lt;/h2&gt;
 &lt;p&gt;사실 커맨드로 설치하지 않아도 공식 홈페이지에 가면 아주아주 쉽게 다운로드가 가능합니다.&lt;/p&gt;
-&lt;p&gt;그렇기에 다음에 직접 이미지를 빌드시켜보고, 해당 이미지를 다른 컴퓨터에서 빌드해서 잘 작동되는지 확인해보겠습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[코어 자바스크립트 (2)]]></title><description><![CDATA[실행 컨텍스트 실행 컨텍스트란 Execution Context)는 scope, hoisting, this, function, closure…]]></description><link>https://jeongyeon9254.github.io/Javascript/2022.11.19코어자바스크립트_2/</link><guid isPermaLink="false">https://jeongyeon9254.github.io/Javascript/2022.11.19코어자바스크립트_2/</guid><pubDate>Sat, 19 Nov 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;실행-컨텍스트&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%8B%A4%ED%96%89-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8&quot; aria-label=&quot;실행 컨텍스트 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;실행 컨텍스트&lt;/h1&gt;
-&lt;p&gt;실행 컨텍스트란 Execution Context)는 scope, hoisting, this, function, closure 등의 동작원리를 담고 있는 자바스크립트의 핵심원리를 담고있는 내용이라고 합니다.&lt;/p&gt;
-&lt;p&gt;즉 이것은 자바스크립트의 동적언어로서의 성격을 잘 파악할수 있는 개념이라고 할수있으며, 실행 컨텍스트를 이해하지 못한다고 하면 사실상 자바스크립트에 대한 이해도가 낮다고 할수 있습니다.&lt;/p&gt;
-&lt;p&gt;그래서 이 기회에 공부를 해보며, 완벽하진 않아도 ‘아 자바스크립트는 이렇게 실행되는구나!’ 라고 생각으 들정도로는 정리를 해보려 합니다.&lt;/p&gt;
-&lt;br&gt;
-&lt;h2 id=&quot;들어가기-앞서-스택-과-큐&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%93%A4%EC%96%B4%EA%B0%80%EA%B8%B0-%EC%95%9E%EC%84%9C-%EC%8A%A4%ED%83%9D-%EA%B3%BC-%ED%81%90&quot; aria-label=&quot;들어가기 앞서 스택 과 큐 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;들어가기 앞서 스택 과 큐&lt;/h2&gt;
-&lt;p&gt;스택과 큐는 알고리즘 자료구조입니다.&lt;br&gt;
-이는 자바스크립트의 개념이라기보다는 프로그래밍 개념이라고 할수 있겠습니다.&lt;/p&gt;
-&lt;p&gt;완벽하게 아는것은 아니지만 짧게 개념만 공부해보겠습니다.&lt;/p&gt;
-&lt;h3 id=&quot;스택&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%8A%A4%ED%83%9D&quot; aria-label=&quot;스택 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;스택&lt;/h3&gt;
-&lt;p&gt;스택은 바닥이 막힌 원통이라고 생각해보겠습니다.&lt;/p&gt;
-&lt;p&gt;해당 원통형에 물건을 차곡차곡 넣으면 꺼낼때는 위에 있는것부터 꺼내질것입니다. 이렇게 데이터의 입출력을 후입선출 방식입니다.&lt;/p&gt;
-&lt;p&gt;아마 가장 흔하게 만나볼수 있는 스택구조는 winodw.history와 같은 네비게이션 객체이지 않나 싶습니다. 페이지를 이동할때 스택구조에 페이지를 저장할 경우 뒤로가기를 클릭하면 그저 가장 최상단에 있는 페이지로 이동시키기만 하면 되기 때문입니다.&lt;/p&gt;
-&lt;p&gt;참고로 이런 스택은 제한이 있기 때문에 해당 스택을 넘어가는 횟수의 함수호출을 할 경우 에러를 발생시키게 됩니다.&lt;/p&gt;
-&lt;h3 id=&quot;큐&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%81%90&quot; aria-label=&quot;큐 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;큐&lt;/h3&gt;
-&lt;p&gt;큐는 양쪽이 뚫려있는 원통형과 같습니다. 먼저 들어온것이 먼저 나가는 선입선출의 구조로 되어있습니다. 이러한 큐는 입력된 순서대로 데이터를 처리하기 때문에 순서가 정해진 작업을 할 경우 사용할 수 있습니다.&lt;/p&gt;
-&lt;br&gt;
-&lt;h2 id=&quot;자바스크립를-동작하게-하는-것들&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%EB%A5%BC-%EB%8F%99%EC%9E%91%ED%95%98%EA%B2%8C-%ED%95%98%EB%8A%94-%EA%B2%83%EB%93%A4&quot; aria-label=&quot;자바스크립를 동작하게 하는 것들 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;자바스크립를 동작하게 하는 것들&lt;/h2&gt;
-&lt;p&gt;자바스크립트는 제목에서처럼 알수 있듯이 스크립트 언어입니다. 그런데 공부하다보면 항상 마주치는것이 하나있습니다. 바로 ECMAscript, 그러다보니 마치 ES가 자바스크립트 자체라고 오해할수도 있는데, 사실은 ES는 모든 스크립트 언어가 호환될수 있도록 만든 협약같은 것이며, 최근에 자바스크립트는 이런 ES를 기반으로 만들어졌다고 할 수 있습니다.&lt;/p&gt;
-&lt;p&gt;이런 자바스크립트를 웹에서 실행시키기 위해 만들어진것이 자바스크립트 엔진입니다. 각 브라우저마다 엔진의 종류는 다르지만 기본적인 구조는 같습니다.&lt;/p&gt;
-&lt;p&gt;자바스크립트 엔진은 메모리힙과 콜스택구조를 가지고 있으며, 자바스크립트가 실행되면 실행컨텍스트가 콜스택이라는 엔진내에 스택구조에 쌓이게 되고, 역시 한번에 한가지 일을 수행하게 됩니다.&lt;/p&gt;
-&lt;p&gt;여담으로 콜스택구조에는 원시타입 데이터가, 메모리 힙에는 참조타입 데이터가 저장된다고 합니다.&lt;/p&gt;
-&lt;p&gt;하지만 우리는 코딩을하며 비동기적으로 무언가를 실행시켜본 경험이 있을것입니다. 만약 자바스크립트가 한번에 한개의 일밖에 못한다면 어떻게 비동기적으로 일을 처리할수가 있었을까요?&lt;/p&gt;
-&lt;p&gt;그 이유는 브라우저에는 자바스크립트 엔진 외에도 WebAPI, 콜백 큐, 이벤트 루프라는것이 있기 때문입니다.&lt;/p&gt;
-&lt;p&gt;해당 구조들이 어떤역할을 하는지 짧게 알아보겠습니다.&lt;/p&gt;
-&lt;h3 id=&quot;webapi&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#webapi&quot; aria-label=&quot;webapi permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;WebAPi&lt;/h3&gt;
-&lt;p&gt;첫번째로 WebApi는 우리가 사용하는 여러가지 기능들입니다. setinterval이나 domevent같은 이벤트들이 webAPi라고 할수 있으며 자세한 정리는 다음번에 하기로 하고 다음으로 넘어갑니다.&lt;/p&gt;
-&lt;h3 id=&quot;콜백큐&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%BD%9C%EB%B0%B1%ED%81%90&quot; aria-label=&quot;콜백큐 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;콜백큐&lt;/h3&gt;
-&lt;p&gt;두번째인 콜백 큐는 비동기 처리를 하는 함수를 관리하는 친구입니다. 이런 콜백 큐는 ECMA2015에 joq queue라는 개념이 추가되었는데, 이는 웹 API가 아니라 다른 비동기 처리인 프로미스등이 우선권을 가지는 개념입니다.&lt;/p&gt;
-&lt;h3 id=&quot;이벤트-루프&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EB%A3%A8%ED%94%84&quot; aria-label=&quot;이벤트 루프 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;이벤트 루프&lt;/h3&gt;
-&lt;p&gt;세번째인 이벤트 루프는 콜스택이 비어있을때 콜백큐에 있는 함수들을 콜스택으로 보내는 일을 합니다.&lt;/p&gt;
-&lt;p&gt;이런식으로 자바스크립트는 싱글스레드이지만 비동기적 처리를 할수 있게 되었습니다.&lt;/p&gt;
-&lt;br&gt;
-&lt;p&gt;위와 같이 들어가기전 스택과 큐에대해 잠깐 알아보았습니다.&lt;/p&gt;
-&lt;p&gt;다음번에는 제대로 실행컨텍스트에 대해 알아보겠습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[에러코드 표준화]]></title><description><![CDATA[너무 난잡한 에러코드 현재 프로젝트에서 프론트단에 API호출이 굉장히 많습니다. 물론 다른 프로젝트고 똑같겠죠. 그리고 비단 API뿐만이 아니라 모든 함수실행에 있어 try&catch…]]></description><link>https://jeongyeon9254.github.io/UX&amp;UI/2022.11.16에러코드 표준화/</link><guid isPermaLink="false">https://jeongyeon9254.github.io/UX&amp;UI/2022.11.16에러코드 표준화/</guid><pubDate>Wed, 16 Nov 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;너무-난잡한-에러코드&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%84%88%EB%AC%B4-%EB%82%9C%EC%9E%A1%ED%95%9C-%EC%97%90%EB%9F%AC%EC%BD%94%EB%93%9C&quot; aria-label=&quot;너무 난잡한 에러코드 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;너무 난잡한 에러코드&lt;/h1&gt;
+&lt;p&gt;그렇기에 다음에 직접 이미지를 빌드시켜보고, 해당 이미지를 다른 컴퓨터에서 빌드해서 잘 작동되는지 확인해보겠습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[에러코드 표준화]]></title><description><![CDATA[너무 난잡한 에러코드 현재 프로젝트에서 프론트단에 API호출이 굉장히 많습니다. 물론 다른 프로젝트고 똑같겠죠. 그리고 비단 API뿐만이 아니라 모든 함수실행에 있어 try&catch…]]></description><link>https://jeongyeon9254.github.io/UX&amp;UI/2022.11.16에러코드 표준화/</link><guid isPermaLink="false">https://jeongyeon9254.github.io/UX&amp;UI/2022.11.16에러코드 표준화/</guid><pubDate>Wed, 16 Nov 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;너무-난잡한-에러코드&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%84%88%EB%AC%B4-%EB%82%9C%EC%9E%A1%ED%95%9C-%EC%97%90%EB%9F%AC%EC%BD%94%EB%93%9C&quot; aria-label=&quot;너무 난잡한 에러코드 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;너무 난잡한 에러코드&lt;/h1&gt;
 &lt;p&gt;현재 프로젝트에서 프론트단에 API호출이 굉장히 많습니다. 물론 다른 프로젝트고 똑같겠죠. 그리고 비단 API뿐만이 아니라 모든 함수실행에 있어 try&amp;#x26;catch문으로 예외처리를 하고있습니다.&lt;/p&gt;
 &lt;p&gt;에러가 났을경우 유저에게 당연히 에러사실을 인지시켜야 합니다. 그렇지 않으면 유저는 자신이 보고있는 화면이 제대로 전달된 화면인이 모를테니까요.&lt;/p&gt;
 &lt;p&gt;4개월 쯤 되었을때 이런생각을 하게됩니다.&lt;br&gt;

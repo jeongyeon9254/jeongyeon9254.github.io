@@ -1,0 +1,206 @@
+---
+title: '하이드레이트란?'
+date: 2023-08-31
+category: 'Javascript'
+draft: false
+---
+
+# 하이드레이트이란?
+
+우선 하이드레이트에 대해 알아보려면 짤막하게 CSR과 SSR에 대해 알아야합니다.
+
+## CSR (클라이언트 사이드 렌더링)
+
+![ex_screenshot](/content/js/csr.png)
+
+CSR은 렌더링이 클라이언트에서 발생하는것을 말하며 순서는 다음과 같습니다.
+
+- 유저가 웹사이트로 요청을 보냄
+- CDN이 HTML 파일과 JS로 접근할 수 있는 링크를 클라이언트로 보냄
+- 클라이언트는 HTML과 JS를 다운로드 받음 (로딩되기전까지는 볼수없음)
+- dom이 그려지고 다운이 완료된 JS가 실행됨
+- api가 있다면 요청후 상호작용이 가능함
+
+<br>
+
+서버는 요청을 받으면 빈 HTML과 JS를 클라이언트에 넘겨주고, 클라이언트는 이를 바탕으로 렌더링을 합니다.
+
+처음에 빈 HTML파일을 받기 때문에 SEO에 적합하지 않고, HTML CSS 스크립트를 한 번에 불러와 첫 로딩 속도가 느려 유저는 빈 화면을 긴 시간동안 봐야하는 단점이 있지만, 첫 로딩 이후에 발생하는 페이지 이동에 대해서는 로딩이 짧고, 서버에는 부하가 없다는 장점이 있습니다.
+
+## SSR (서버 사이드 렌더링)
+
+![ex_screenshot](/content/js/ssr.png)
+
+이와는 반대로 SSR은 렌더링이 서버에서 발생하하는것을 말하며 순서는 다음과 같습니다.
+
+- 유저가 웹사이트로 요청을 보냄
+- Server는 'Ready to Render'. 즉, 즉시 렌더링 가능한 HTML파일을 만듬
+- 클라이언트에 전달되는 순간, 이미 렌더링 준비가 되어있기 때문에 HTML은 즉시 렌더링
+- 클라이언트가 자바스크립트를 다운
+- 브라우저가 js 프레임워크 또는 js 코드를 실행함
+- 브라우저가 Javascript 프레임워크를 실행함
+
+<br>
+
+서버는 완성된 HTML을 클라이언트에게 전송하고, 유저는 빈 화면이 아닌 UI컨텐츠를 볼 수 있습니다. 하지만 사용자 조작은 할 수 없는 상태인데, 버튼 클릭 등의 조작했다면 동작을 기억해두었다가 JS까지 컴파일 되면 기억하고 있던 사용자 조작이 실행된다고 합니다.
+
+## 그래서 하이드레이트란?
+
+하이드레이트는 SSR에서 사용되는 개념(모두가 그런지는 모르겠지만)입니다. SSR의 경우 pre-rendering를 통해 완성된 HTML을 클라이언트에게 전달합니다.
+
+이렇게 서버에서 렌더링된 정적 페이지를 클라이언트에게 보내고, react는 번들링된 js 코드를 클라이언트에게 보냅니다.
+
+클라이언트는 전달받은 HTML과 js코드를 매칭하는 하이드레이트를 수행합니다. 하이드레이트란 전송받은 js 이전에 보내진 HTML DOM 요소 위에서 한번 더 렌더링 하게 되면서 각각 자기 자리를 찾아가며 매칭되는 것입니다. 하이드레이트 후에는 클릭과 같은 이벤트나 모듈들이 적용되어 사용자 조작이 가능해집니다.
+
+즉, 하이드레이트는 클라이언트 측 js 정적 호스팅 또는 서버 측 렌더링을 통해 전달되는 정적 HTML 요소에 이벤트 핸들러를 첨부하여 동적 웹 페이지로 변환하는 기술입니다.
+
+SSR 덕분에 사용자는 UI를 먼저 볼 수 있고, 하이드레이트 덕분에 JS코드가 매칭되어 추후에 사용자 조작이 가능한 것입니다.
+
+## 여기서 잠깐! TTV와 TTI란?
+
+![ex_screenshot](/content/js/tti.png)
+
+TTV(Time To View)란 사용자가 브라우저의 내용을 볼 수 있는 시점이며 TTI(Time To Interact)는 사용자가 브라우저를 인터랙션 할 수 있는 시점입니다.
+
+예를 들어 Next.js는 SSR이므로 pre-render가 되면 TTV가 가능해지고, 하이드레이트 끝나면 TTI가 가능합니다. 하지만 React(CSR)의 경우 HTML로딩과 JS로딩이 끝나야 UI가 나타나므로 TTV, TTI는 모두 완료되어야 가능한 것입니다.
+
+## SSR과 Hydrate 문제점
+
+짧게 위에서 본 바로는 SSR은 SEO에 좋고 유저에게 처음에 빈 화면을 보여주며 사용자 경험을 좋게 만들 수 있습니다. 그리고 하이드레이트를 이용하여 빈 화면에 JavaScript로 이벤트 헨들러를 붙여 동적으로 동작할 수 있게해줍니다.
+
+2번 렌더링 하는것이 비효율적으로 보일 수 있지만 JavaScript가 빠진 UI를 유저에게 빠르게 로딩시켜주는 장점이 있고, 2번째 렌더에서는 Hydrate만 수행하고 UI Paint는 하지 않기 때문에 SSR이 매우 좋아보입니다.
+
+하지만 이런 SSR과 Hydrate에도 문제점이 있습니다.
+
+1. 보여주기 전에 서버에 다 가져와야 하는 문제
+
+   API에서 데이터를 받아 UI를 설계한 부분인 Main Page의 댓글을 사용자에게 빠르게 보여주고 싶지만 CSR은 JavaScript가 완벽히 불러와지기 전까지 빈 화면을 보여주기 때문에 SSR을 해야합니다. 이 경우 HTML에 렌더할 때 서버상에서 컴포넌트에 필요한 데이터를 모두 다 준비해놔야 합니다. 결국 댓글 위한 데이터를 불러오고 렌더하기 까지 나머지 HTML을 전송하는 것을 지연시키게 됩니다.
+
+2. 하이드레이션을 하기 위해서는 모두 불러와야 하는 문제
+
+   Main Page에는 댓글 외에도 네비게이션바, 사이드바 등에 사용된 JavaScript코드가 있을 것입니다. 댓글에 대한 코드가 불러와지기 전까지 다른 부분들도 하이드레이션을 할 수 없게됩니다.
+
+3. 상호작용 하기 전에 모두 하이드레이션을 해야하는 문제
+
+   한 번 하이드레이션이 시작되면 전체 트리가 완전히 하이드레이션 되기 전까지 유저는 네비게이션 바, 사이드바, 포스팅 본문과 상호작용할 수 없습니다. 특히나 네비게이션의 경우 유저가 이 페이지 자체에서 떠나고 싶지만 현재 클라이언트에서 열심히 하이드레이션을 진행하고 있기 때문에 더 이상 보고 싶지 않은 페이지에 남아 있어야 합니다.
+
+## 해결방법은?
+
+![ex_screenshot](/content/js/hy.png)
+
+위의 문제점을 해결하기 위해 React18에서 Suspense가 업그레이드 되어 나왔습니다.
+
+데이터 가져오기 (서버) -> HTML로 렌더링 (서버) -> 코드 불러오기 (클라이언트) -> 하이드레이션 (클라이언트)
+
+위 과정에서 그 어떤 단계도 이전 단계가 전체 애플리케이션에 대하여 끝나기 전까진 시작되지 못합니다. 이것이 위의 3가지 문제점을 유발하는 원인입니다. 해결책은 작업을 쪼개 전체 애플리케이션이 아닌 각각의 부분들에 대해 이 단계들을 수행할 수 있게 하는 것입니다.
+
+### 보여주기 전에 서버에 다 가져와야 하는 문제 해결
+
+```javascript
+<Layout>
+  <NavBar />
+  <Sidebar />
+  <RightPane>
+    <Post />
+    <Suspense fallback={<Spinner />}>
+      <Comments />
+    </Suspense>
+  </RightPane>
+</Layout>
+```
+
+![ex_screenshot](/content/js/hy1.png)
+
+댓글 부분인 Comment 컴포넌트를 Suspense 으로 감싸주어 React는 댓글 부분을 기다리지 않고 나머지 페이지에 대해 HTML을 스트리밍 하도록 할 수 있습니다. Comments 컴포넌트 대신 React는 placeholder에 해당하는 Spinner 컴포넌트를 보내줍니다.
+
+```javascript
+<main>
+  <nav>
+    <!--NavBar -->
+    <a href="/">Home</a>
+  </nav>
+  <aside>
+    <!-- Sidebar -->
+    <a href="/profile">Profile</a>
+  </aside>
+  <article>
+    <!-- Post -->
+    <p>Hello world</p>
+  </article>
+  <section id="comments-spinner">
+    <!-- Spinner -->
+    <img width="400" src="spinner.gif" alt="Loading..." />
+  </section>
+</main>
+```
+
+Comment 컴포넌트에 대한 HTML 코드는 없는 것을 볼 수 있습니다.
+
+```javascript
+<div hidden id="comments">
+  <!-- Comments -->
+  <p>First comment</p>
+  <p>Second comment</p>
+</div>
+<script>
+  // This implementation is slightly simplified
+  document
+    .getElementById("sections-spinner")
+    .replaceChildren(document.getElementById("comments"));
+</script>
+```
+
+서버단에서 댓글에 해당되는 데이터가 준비되면, React는 동일한 스트림에 추가되는 HTML과 해당 HTML을 “올바른 장소”에 위치시키기 위한 작은 인라인 script 태그를 보내줍니다.
+
+결과적으로 클라이언트에서 React 자체가 불러와지기도 전에 늦게 도착한 댓글 부분의 HTML이 “들어오게” 됩니다.
+
+### 하이드레이션을 하기 위해서는 모두 불러와야 하는 문제 해결
+
+댓글 위젯을 위한 JavaScript 코드가 로딩되기 전에, 클라이언트상에서 애플리케이션을 하이드레이션할 수 없는 문제점을 코드 스플릿팅으로 해결할 수 있습니다.
+
+lazy import를 사용하면 메인 번들에서 분리시킬 수 있습니다.
+
+```javascript
+import { lazy } from 'react'
+
+const Comments = lazy(() => import('./Comments.js'))
+
+// ...
+
+<Suspense fallback={<Spinner />}>
+  <Comments />
+</Suspense>
+```
+
+이제 댓글에 해당하는 코드가 아직 불러와지지 않아도 다른 부분들은 먼저 하이드레이션 되고 그 후 Comment 컴포넌트도 하이드레이션이 될 것입니다.
+
+### 상호작용 하기 전에 모두 하이드레이션을 해야하는 문제 해결
+
+```javascript
+<Layout>
+  <NavBar />
+  <Suspense fallback={<Spinner />}>
+    <Sidebar />
+  </Suspense>
+  <RightPane>
+    <Post />
+    <Suspense fallback={<Spinner />}>
+      <Comments />
+    </Suspense>
+  </RightPane>
+</Layout>
+```
+
+![ex_screenshot](/content/js/hy2.png)
+
+NavBar와 Post 컴포넌트는 Hydrate가 되었고, Sidebar와 Comments 컴포넌트는 HTML 스트리밍만 된 상태라고 가정해보겠습니다.
+
+이제 사이드바와 댓글 코드를 가지고 있는 번들이 불러와집니다. React는 둘 모두를 하이드레이션을 하는데, 트리상에서 더 먼저 발견되는 사이드바 부터 시작합니다.
+
+하지만 이때 유저가 댓글부분을 클릭한다면, React는 해당 클릭을 기록한 후 댓글 항목에 대한 하이드레이션에 우선순위를 부여합니다.
+
+![ex_screenshot](/content/js/hy3.png)
+
+먼저 수행하려 했던 사이드바의 하이드레이션을 하지 않고, 댓글에 대한 하이드레이션을 합니다.
+
+이제 React는 최대한 빨리 모든 것을 하이드레이션 할 것이고, 유저의 상호작용을 기반으로 화면상에서 가장 급한 부분에 우선순위를 분여할 것입니다.

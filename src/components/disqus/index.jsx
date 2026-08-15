@@ -1,38 +1,28 @@
-import React, { Component } from 'react'
-import ReactDisqusComments from 'react-disqus-comments'
+import React, { useEffect } from 'react'
 
-export class Disqus extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { toasts: [] }
-    this.notifyAboutComment = this.notifyAboutComment.bind(this)
-    this.onSnackbarDismiss = this.onSnackbarDismiss.bind(this)
-  }
+const THREAD_ID = 'disqus_thread'
 
-  onSnackbarDismiss() {
-    const [, ...toasts] = this.state.toasts
-    this.setState({ toasts })
-  }
+export const Disqus = ({ post, shortName, siteUrl, slug }) => {
+  const url = siteUrl + slug
+  const { title } = post.frontmatter
 
-  notifyAboutComment() {
-    const toasts = this.state.toasts.slice()
-    toasts.push({ text: 'New comment available!!' })
-    this.setState({ toasts })
-  }
+  useEffect(() => {
+    window.disqus_config = function() {
+      this.page.url = url
+      this.page.identifier = title
+      this.page.title = title
+    }
 
-  render() {
-    const { post, shortName, siteUrl, slug } = this.props
-    const url = siteUrl + slug
+    const script = document.createElement('script')
+    script.src = `https://${shortName}.disqus.com/embed.js`
+    script.setAttribute('data-timestamp', String(Date.now()))
+    script.async = true
+    document.body.appendChild(script)
 
-    return (
-      <ReactDisqusComments
-        shortname={shortName}
-        identifier={post.frontmatter.title}
-        title={post.frontmatter.title}
-        url={url}
-        category_id={post.frontmatter.category_id}
-        onNewComment={this.notifyAboutComment}
-      />
-    )
-  }
+    return () => {
+      document.body.removeChild(script)
+    }
+  }, [url, title, shortName])
+
+  return <div id={THREAD_ID} />
 }

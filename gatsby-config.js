@@ -67,14 +67,18 @@ module.exports = {
         ],
       },
     },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: metaConfig.ga,
-        head: true,
-        anonymize: true,
+    // 추적 ID가 실제로 설정된 경우에만 gtag 스크립트를 삽입한다
+    metaConfig.ga &&
+      metaConfig.ga !== '0' && {
+        resolve: `gatsby-plugin-google-gtag`,
+        options: {
+          trackingIds: [metaConfig.ga],
+          pluginConfig: {
+            head: true,
+            respectDNT: true,
+          },
+        },
       },
-    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -96,8 +100,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        host: 'https://your-blog.netlify.app',
-        sitemap: 'https://your-blog.netlify.app/sitemap.xml',
+        host: metaConfig.siteUrl,
+        sitemap: `${metaConfig.siteUrl}/sitemap-index.xml`,
         policy: [
           {
             userAgent: '*',
@@ -106,19 +110,67 @@ module.exports = {
         ],
       },
     },
-    {
-      resolve: `gatsby-plugin-google-adsense`,
-      options: {
-        publisherId: metaConfig.ad,
-      },
-    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-feed`,
+    `gatsby-plugin-image`,
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMarkdownRemark } }) =>
+              allMarkdownRemark.nodes.map(node => ({
+                title: node.frontmatter.title,
+                description: node.excerpt,
+                date: node.frontmatter.date,
+                url: site.siteMetadata.siteUrl + node.fields.slug,
+                guid: site.siteMetadata.siteUrl + node.fields.slug,
+                custom_elements: [{ 'content:encoded': node.html }],
+              })),
+            query: `
+              {
+                allMarkdownRemark(
+                  filter: {
+                    frontmatter: { category: { ne: null }, draft: { eq: false } }
+                  }
+                  sort: { frontmatter: { date: DESC } }
+                ) {
+                  nodes {
+                    excerpt
+                    html
+                    fields {
+                      slug
+                    }
+                    frontmatter {
+                      title
+                      date
+                    }
+                  }
+                }
+              }
+            `,
+            output: `/rss.xml`,
+            title: `${metaConfig.title} RSS Feed`,
+          },
+        ],
+      },
+    },
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-lodash`,
     `gatsby-plugin-sitemap`,
-  ],
+  ].filter(Boolean),
 }

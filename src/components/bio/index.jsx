@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 import { StaticQuery, graphql, Link } from 'gatsby'
-import Image from 'gatsby-image'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 
 import './index.scss'
 
@@ -15,22 +15,25 @@ export const Bio = forwardRef((props, ref) => {
           <div ref={ref} className="bio">
             <div className="author">
               <div className="author-description">
-                <Image
+                <GatsbyImage
                   className="author-image"
-                  fixed={data.avatar.childImageSharp.fixed}
+                  image={getImage(data.avatar)}
                   alt={author}
                   style={{
+                    borderRadius: `100%`,
+                  }}
+                  imgStyle={{
                     borderRadius: `100%`,
                   }}
                 />
                 <div className="author-name">
                   <span className="author-name-prefix">Written by</span>
-                  <Link to={'/about'} className="author-name-content">
+                  <Link to={'/playground'} className="author-name-content">
                     <span>@{author}</span>
                   </Link>
                   <div className="author-introduction">{introduction}</div>
                   <p className="author-socials">
-                    <a href={`https://jeongyeon9254.github.io/about`}>Resume</a>
+                    <Link to={'/about'}>Resume</Link>
                     {social.instagram && (
                       <a href={`https://www.instagram.com/${social.instagram}`}>
                         Instagram
@@ -74,9 +77,7 @@ const bioQuery = graphql`
   query BioQuery {
     avatar: file(absolutePath: { regex: "/profile.png/" }) {
       childImageSharp {
-        fixed(width: 72, height: 72) {
-          ...GatsbyImageSharpFixed
-        }
+        gatsbyImageData(width: 72, height: 72, layout: FIXED)
       }
     }
     site {

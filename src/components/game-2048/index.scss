@@ -1,0 +1,381 @@
+@import '../../styles/variables.scss';
+
+$g2048-board-color: #bbada0;
+$g2048-cell-color: rgba(238, 228, 218, 0.35);
+$g2048-dark-text: #776e65;
+$g2048-light-text: #f9f6f2;
+
+// 보드는 부모 너비를 기준으로 정사각형(padding-bottom: 100%)을 잡는다.
+// 그래서 폭 제한은 보드가 아니라 이 래퍼가 가진다.
+.g2048 {
+  max-width: 420px;
+  margin: 0 auto 32px;
+  user-select: none;
+  -webkit-user-select: none;
+
+  .g2048-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .g2048-headline {
+    margin-right: 12px;
+  }
+
+  .g2048-title {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    border-bottom: none;
+  }
+
+  .g2048-description {
+    margin: 4px 0 0;
+    font-size: 80%;
+    color: $middle-gray;
+  }
+
+  .g2048-scores {
+    display: flex;
+  }
+
+  .g2048-score {
+    position: relative;
+    min-width: 72px;
+    margin-left: 8px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    background-color: $g2048-board-color;
+    color: $g2048-light-text;
+    text-align: center;
+    text-shadow: none;
+  }
+
+  .g2048-score-label {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    opacity: 0.8;
+  }
+
+  .g2048-score-value {
+    display: block;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .g2048-score-gain {
+    position: absolute;
+    top: 8px;
+    left: 0;
+    right: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: $g2048-dark-text;
+    animation: g2048-gain 700ms ease-in forwards;
+  }
+
+  .g2048-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 14px 0 10px;
+  }
+
+  .g2048-hint {
+    font-size: 75%;
+    color: $light-gray;
+  }
+
+  .g2048-button {
+    padding: 7px 14px;
+    border: none;
+    border-radius: 6px;
+    background-color: #8f7a66;
+    color: $g2048-light-text;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    text-shadow: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #9e8875;
+    }
+  }
+
+  .g2048-board {
+    --g2048-gap: 12px;
+    --g2048-cell: calc((100% - var(--g2048-gap) * 5) / 4);
+
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    border-radius: 8px;
+    background-color: $g2048-board-color;
+    touch-action: none;
+  }
+
+  .g2048-inner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  .g2048-cell,
+  .g2048-tile {
+    position: absolute;
+    top: var(--g2048-gap);
+    left: var(--g2048-gap);
+    width: var(--g2048-cell);
+    height: var(--g2048-cell);
+    border-radius: 6px;
+  }
+
+  .g2048-cell {
+    background-color: $g2048-cell-color;
+  }
+
+  .g2048-tile {
+    z-index: 2;
+    transition: transform 100ms ease-in-out;
+
+    &.is-absorbed {
+      z-index: 1;
+    }
+  }
+
+  .g2048-tile-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    text-shadow: none;
+    background-color: #eee4da;
+    color: $g2048-dark-text;
+
+    &.is-new {
+      animation: g2048-appear 140ms ease-out;
+    }
+
+    &.is-merged {
+      animation: g2048-pop 160ms ease-in-out;
+    }
+  }
+
+  .g2048-tile-d3 {
+    font-size: 26px;
+  }
+  .g2048-tile-d4 {
+    font-size: 21px;
+  }
+  .g2048-tile-d5 {
+    font-size: 17px;
+  }
+
+  .g2048-tile-2 {
+    background-color: #eee4da;
+  }
+  .g2048-tile-4 {
+    background-color: #ede0c8;
+  }
+  .g2048-tile-8 {
+    background-color: #f2b179;
+    color: $g2048-light-text;
+  }
+  .g2048-tile-16 {
+    background-color: #f59563;
+    color: $g2048-light-text;
+  }
+  .g2048-tile-32 {
+    background-color: #f67c5f;
+    color: $g2048-light-text;
+  }
+  .g2048-tile-64 {
+    background-color: #f65e3b;
+    color: $g2048-light-text;
+  }
+  .g2048-tile-128 {
+    background-color: #edcf72;
+    color: $g2048-light-text;
+  }
+  .g2048-tile-256 {
+    background-color: #edcc61;
+    color: $g2048-light-text;
+  }
+  .g2048-tile-512 {
+    background-color: #edc850;
+    color: $g2048-light-text;
+  }
+  .g2048-tile-1024 {
+    background-color: #edc53f;
+    color: $g2048-light-text;
+  }
+  .g2048-tile-2048 {
+    background-color: #edc22e;
+    color: $g2048-light-text;
+    box-shadow: 0 0 20px rgba(237, 194, 46, 0.55);
+  }
+  .g2048-tile-super {
+    background-color: #3c3a32;
+    color: $g2048-light-text;
+  }
+
+  .g2048-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background-color: rgba(238, 228, 218, 0.78);
+    color: $g2048-dark-text;
+    text-shadow: none;
+    animation: g2048-fade-in 320ms ease-in;
+  }
+
+  .g2048-overlay-title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  .g2048-overlay-score {
+    margin: 4px 0 14px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+  }
+
+  .g2048-overlay-actions {
+    display: flex;
+
+    .g2048-button + .g2048-button {
+      margin-left: 8px;
+    }
+  }
+}
+
+body.dark .g2048 {
+  .g2048-description {
+    color: $dark-middle-font-color;
+  }
+
+  .g2048-hint {
+    color: $dark-middle-font-color;
+  }
+
+  .g2048-board {
+    background-color: #3b3f4a;
+  }
+
+  .g2048-cell {
+    background-color: rgba(255, 255, 255, 0.07);
+  }
+
+  .g2048-score {
+    background-color: #3b3f4a;
+  }
+
+  .g2048-overlay {
+    background-color: rgba(40, 44, 53, 0.82);
+    color: $dark-lightest-font-color;
+  }
+
+  .g2048-score-gain {
+    color: $dark-lightest-font-color;
+  }
+}
+
+@media (max-width: 480px) {
+  .g2048 {
+    .g2048-board {
+      --g2048-gap: 9px;
+    }
+
+    .g2048-tile-inner {
+      font-size: 26px;
+    }
+    .g2048-tile-d3 {
+      font-size: 21px;
+    }
+    .g2048-tile-d4 {
+      font-size: 17px;
+    }
+    .g2048-tile-d5 {
+      font-size: 14px;
+    }
+
+    .g2048-header {
+      flex-direction: column;
+    }
+
+    .g2048-scores {
+      margin-top: 10px;
+    }
+
+    .g2048-score {
+      margin: 0 8px 0 0;
+    }
+  }
+}
+
+@keyframes g2048-appear {
+  0% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes g2048-pop {
+  0% {
+    transform: scale(1);
+  }
+  55% {
+    transform: scale(1.18);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes g2048-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes g2048-gain {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-26px);
+  }
+}

@@ -1,0 +1,126 @@
+@import '../../styles/variables.scss';
+
+// 본문 칼럼은 가운데 정렬이고 패딩까지 합쳐 절반이 약 350px 이다.
+// 그만큼 오른쪽으로 밀어야 본문에 닿지 않고 옆에 나란히 선다.
+$toc-width: 200px;
+$toc-offset: 390px;
+
+// 목차 오른쪽 끝(50% + 590px)이 화면 밖으로 나가지 않는 최소 너비.
+$toc-breakpoint: 1280px;
+
+.toc {
+  // 기본은 숨김. 본문 옆에 자리가 나는 화면에서만 켠다.
+  display: none;
+  position: fixed;
+  top: 120px;
+  left: calc(50% + #{$toc-offset});
+  z-index: 5;
+  width: $toc-width;
+  // 목차가 길면 목차 안에서만 스크롤되게 한다.
+  max-height: calc(100vh - 180px);
+  overflow-y: auto;
+  padding-left: 16px;
+  border-left: 1px solid $light-category-border-color;
+  font-size: 13px;
+  line-height: 1.5;
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background-color: rgba(0, 0, 0, 0.15);
+  }
+
+  .toc-title {
+    margin: 0 0 10px;
+    font-size: 11px;
+    font-weight: 700;
+    color: $light-gray;
+  }
+
+  .toc-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .toc-item {
+    margin: 0;
+
+    a {
+      // 제목이 길면 두 줄까지만 보여주고 자른다.
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      padding: 5px 0;
+      color: $middle-gray;
+      text-decoration: none;
+      transition: color 0.15s;
+
+      &:hover {
+        color: $dark-gray;
+      }
+
+      // 지금 읽고 있는 절
+      &[aria-current='true'] {
+        // 본문 링크와 같은 파랑 (utils/typography.js)
+        color: #0687f0;
+        font-weight: 700;
+      }
+    }
+
+    &[data-level='1'] > a {
+      font-weight: 700;
+    }
+
+    &[data-level='2'] > a {
+      padding-left: 10px;
+    }
+
+    &[data-level='3'] > a {
+      padding-left: 20px;
+      font-size: 12px;
+    }
+  }
+}
+
+@media (min-width: $toc-breakpoint) {
+  .toc {
+    display: block;
+  }
+}
+
+// 자리가 넉넉해지면 제목이 덜 잘리도록 넓힌다.
+@media (min-width: 1600px) {
+  .toc {
+    width: 240px;
+  }
+}
+
+body.dark .toc {
+  border-left-color: rgba(255, 255, 255, 0.15);
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .toc-title {
+    color: #6f6f6f;
+  }
+
+  .toc-item a {
+    color: #8f8f8f;
+
+    &:hover {
+      color: $dark-lightest-font-color;
+    }
+
+    &[aria-current='true'] {
+      color: $dark-link-color;
+    }
+  }
+}

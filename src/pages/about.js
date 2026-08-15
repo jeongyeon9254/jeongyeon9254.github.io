@@ -1,46 +1,34 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import Helmet from 'react-helmet'
 
-import { rhythm } from '../utils/typography'
-import * as Lang from '../constants'
+import { Resume } from '../components/resume'
 
-export default ({ data }) => {
-  const resumes = data.allMarkdownRemark.edges
-
-  const resume = resumes
-    .filter(({ node }) => node.frontmatter.lang === Lang.ENGLISH)
-    .map(({ node }) => node)[0]
-
-  return (
-    <div
-      style={{
-        marginLeft: `auto`,
-        marginRight: `auto`,
-        maxWidth: rhythm(24),
-        padding: `${rhythm(0.5)} ${rhythm(3 / 4)} ${rhythm(1.5)} ${rhythm(
-          3 / 4
-        )}`,
-      }}
-    >
-      <div dangerouslySetInnerHTML={{ __html: resume.html }} />
-    </div>
-  )
-}
+export default ({ data }) => (
+  <React.Fragment>
+    <Helmet>
+      <html lang="ko" />
+      <title>정연재 · Frontend Engineer</title>
+      {/* 이력서에서만 쓰는 폰트라 이 페이지에서만 불러온다. */}
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+      />
+    </Helmet>
+    <Resume photo={data.photo} />
+  </React.Fragment>
+)
 
 export const pageQuery = graphql`
   query {
-    allMarkdownRemark(filter: { frontmatter: { category: { eq: null } } }) {
-      edges {
-        node {
-          id
-          excerpt(pruneLength: 160)
-          html
-          frontmatter {
-            title
-            date(formatString: "MMMM DD, YYYY")
-            lang
-          }
-        }
+    photo: file(name: { eq: "임시이력서용이미지" }) {
+      childImageSharp {
+        gatsbyImageData(
+          width: 260
+          aspectRatio: 0.7647
+          layout: CONSTRAINED
+          transformOptions: { fit: COVER, cropFocus: CENTER }
+        )
       }
     }
   }

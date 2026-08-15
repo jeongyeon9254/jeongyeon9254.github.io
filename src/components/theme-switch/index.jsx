@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Switch from 'react-switch'
 
 import * as Dom from '../../utils/dom'
 import * as Storage from '../../utils/storage'
-import { THEME } from '../../constants'
+import { THEME, THEME_SHIFT } from '../../constants'
 
 import './index.scss'
+
+// top/index.scss 의 $top-shift-duration 과 같은 값이어야 한다.
+const THEME_SHIFT_DURATION = 1200
 
 const MoonIcon = () => {
   return (
@@ -51,21 +54,56 @@ function toggleTheme(theme) {
   }
 }
 
+function clearShiftClasses() {
+  Dom.removeClassToBody(THEME_SHIFT.TO_DARK)
+  Dom.removeClassToBody(THEME_SHIFT.TO_LIGHT)
+}
+
 export const ThemeSwitch = () => {
   const [checked, setChecked] = useState(false)
+  const timersRef = useRef([])
+  const mountedRef = useRef(false)
+
+  const clearTimers = () => {
+    timersRef.current.forEach(clearTimeout)
+    timersRef.current = []
+  }
 
   const handleChange = checked => {
     const theme = getTheme(checked)
 
     Storage.setTheme(checked)
     setChecked(checked)
+    // 테마는 항상 즉시 바꾼다. 헤더를 지나가는 띠는 그 위를 덮는 연출일 뿐이라
+    // on/off 자체를 늦추지 않는다.
     toggleTheme(theme)
+
+    // 첫 렌더에서는 저장된 테마를 그대로 입히기만 한다. 새로고침할 때마다 노을이 지면 곤란하다.
+    if (!mountedRef.current) {
+      mountedRef.current = true
+      return
+    }
+
+    clearTimers()
+    clearShiftClasses()
+    // 클래스를 뗐다 붙이는 사이에 리플로우를 강제해야 연타했을 때 애니메이션이 처음부터 다시 돈다.
+    void Dom.getBody().offsetWidth
+    Dom.addClassToBody(
+      theme === THEME.DARK ? THEME_SHIFT.TO_DARK : THEME_SHIFT.TO_LIGHT
+    )
+
+    timersRef.current.push(setTimeout(clearShiftClasses, THEME_SHIFT_DURATION))
   }
 
   useEffect(() => {
     const checked = Storage.getTheme(Dom.hasClassOfBody(THEME.DARK))
 
     handleChange(checked)
+
+    return () => {
+      clearTimers()
+      clearShiftClasses()
+    }
   }, [])
 
   return (

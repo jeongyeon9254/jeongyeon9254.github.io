@@ -6,6 +6,7 @@ import { Layout } from '../layout'
 import { Head } from '../components/head'
 import { PostTitle } from '../components/post-title'
 import { PostContainer } from '../components/post-container'
+import { Toc } from '../components/toc'
 import { SocialShare } from '../components/social-share'
 import { SponsorButton } from '../components/sponsor-button'
 import { Bio } from '../components/bio'
@@ -33,6 +34,7 @@ export default ({ data, pageContext, location }) => {
     <Layout location={location} title={title}>
       <Head title={postTitle} description={post.excerpt} />
       <PostTitle title={postTitle} />
+      <Toc html={post.html} />
       <PostContainer html={post.html} />
       <SocialShare title={postTitle} author={author} />
       <Elements.Hr />

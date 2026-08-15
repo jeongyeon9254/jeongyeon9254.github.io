@@ -1,12 +1,33 @@
 @import '../../styles/variables.scss';
 
+// 애니메이션 길이는 theme-switch 의 THEME_SHIFT_DURATION 과 맞춰야 한다.
+$top-shift-duration: 1200ms;
+
 .top {
   position: relative;
   width: 100%;
   height: 60px;
-  background: $theme-gradient;
+  overflow: hidden;
+  background: $top-gradient-light;
+
+  // 밤 → 노을 → 낮 이 가로로 이어진 띠. 헤더 너비의 3배라 한 번에 1/3씩만 보인다.
+  // 테마 자체는 클릭 즉시 바뀌고, 이 띠가 헤더를 덮은 채로 지나가며 그 교체를 가려준다.
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 300%;
+    z-index: 0;
+    opacity: 0;
+    background: $top-gradient-shift;
+    pointer-events: none;
+  }
 
   .link {
+    position: relative;
+    z-index: 1;
     display: inline-block;
     font-size: 28px;
     padding-top: 8px;
@@ -15,5 +36,90 @@
     margin-left: 20px;
     font-family: 'Catamaran';
     font-weight: 800;
+  }
+}
+
+body.dark .top {
+  background: $top-gradient-dark;
+}
+
+// 옅은 하늘 위에서는 흰 로고가 보이지 않는다.
+body.light .top .link {
+  color: $top-link-light-color;
+  opacity: 1;
+}
+
+// 띠가 지나가는 동안 로고 색도 같이 넘긴다.
+// 밤·노을 구간에서는 흰색, 옅은 하늘 구간에서는 짙은 파랑이라야 계속 읽힌다.
+body.theme-shift-dark .top .link {
+  animation: top-link-to-dark $top-shift-duration ease-in-out;
+}
+
+body.theme-shift-light .top .link {
+  animation: top-link-to-light $top-shift-duration ease-in-out;
+}
+
+@keyframes top-link-to-dark {
+  0% {
+    color: $top-link-light-color;
+  }
+  35%,
+  100% {
+    color: $top-header-text-color;
+  }
+}
+
+@keyframes top-link-to-light {
+  0%,
+  65% {
+    color: $top-header-text-color;
+  }
+  100% {
+    color: $top-link-light-color;
+  }
+}
+
+body.theme-shift-dark .top::after {
+  animation: top-shift-to-dark $top-shift-duration ease-in-out;
+}
+
+body.theme-shift-light .top::after {
+  animation: top-shift-to-light $top-shift-duration ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.theme-shift-dark .top::after,
+  body.theme-shift-light .top::after {
+    animation: none;
+  }
+}
+
+// 낮 → 노을 → 밤. 띠가 오른쪽으로 흐른다.
+@keyframes top-shift-to-dark {
+  0% {
+    opacity: 1;
+    transform: translateX(-66.667%);
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+}
+
+// 밤 → 노을 → 낮. 띠가 왼쪽으로 흐른다.
+@keyframes top-shift-to-light {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-66.667%);
   }
 }

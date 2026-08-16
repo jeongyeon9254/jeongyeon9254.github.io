@@ -18,3 +18,14 @@ p {
 h1 {
   border-bottom: none;
 }
+
+// 본문에 직접 삽입한 영상. width/height 속성은 로딩 중 레이아웃이 튀지 않게
+// 비율만 알려주는 용도이고, 실제 크기는 글 폭에 맞춘다.
+.post-content video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 24px auto;
+  border-radius: 6px;
+  background-color: #000;
+}

@@ -23,15 +23,40 @@ $toc-breakpoint: 1280px;
   border-left: 1px solid $light-category-border-color;
   font-size: 13px;
   line-height: 1.5;
+  // 스크롤바는 평소에 숨겨두고, 목차에 마우스를 올렸을 때만 흐릿하게 띄운다.
+  // 목차는 읽는 동안 계속 시야에 있으므로 막대가 상시 보이면 시선을 끈다.
   scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  transition: scrollbar-color 0.25s;
 
-  &::-webkit-scrollbar {
-    width: 4px;
+  &:hover {
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
   }
 
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  // 투명 테두리 + padding-box 로 막대 양옆에 여백을 만든다.
+  // 실제 폭은 8px 이지만 4px 짜리 알약처럼 보인다.
   &::-webkit-scrollbar-thumb {
-    border-radius: 2px;
-    background-color: rgba(0, 0, 0, 0.15);
+    border: 2px solid transparent;
+    border-radius: 999px;
+    background-color: transparent;
+    background-clip: padding-box;
+    transition: background-color 0.25s;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.35);
   }
 
   .toc-title {
@@ -104,8 +129,16 @@ $toc-breakpoint: 1280px;
 body.dark .toc {
   border-left-color: rgba(255, 255, 255, 0.15);
 
-  &::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.2);
+  &:hover {
+    scrollbar-color: rgba(255, 255, 255, 0.24) transparent;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.24);
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.42);
   }
 
   .toc-title {

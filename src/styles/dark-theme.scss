@@ -38,12 +38,21 @@ body.dark {
       a {
         color: $dark-category-text-color;
       }
+      .count {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: $dark-category-text-color;
+      }
       &[aria-selected='true'] {
         border: 2px solid $dark-category-highlight-border-color;
         font-weight: bolder;
       }
       &[aria-selected='true'] a {
         color: $dark-category-highlight-text-color;
+      }
+      // 선택된 탭에서는 뱃지를 반전시켜 지금 보고 있는 카테고리를 분명히 한다.
+      &[aria-selected='true'] .count {
+        background-color: $dark-category-highlight-text-color;
+        color: $dark-category-background-color;
       }
     }
   }

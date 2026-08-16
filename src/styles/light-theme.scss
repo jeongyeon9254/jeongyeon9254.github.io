@@ -33,12 +33,21 @@ body.light {
       a {
         color: $light-category-text-color;
       }
+      .count {
+        background-color: $light-category-border-color;
+        color: $light-category-text-color;
+      }
       &[aria-selected='true'] {
         border: 2px solid $light-category-highlight-border-color;
         font-weight: bolder;
       }
       &[aria-selected='true'] a {
         color: $light-category-highlight-text-color;
+      }
+      // 선택된 탭에서는 뱃지를 반전시켜 지금 보고 있는 카테고리를 분명히 한다.
+      &[aria-selected='true'] .count {
+        background-color: $light-category-highlight-text-color;
+        color: $light-category-item-color;
       }
     }
   }

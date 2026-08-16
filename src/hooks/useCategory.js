@@ -8,14 +8,16 @@ let DEST_POS
 export function useCategory(DEST) {
   const [category, setCategory] = useState(CATEGORY_TYPE.ALL)
   DEST_POS = DEST
+  // 뒤로가기(popstate)로 카테고리가 바뀔 때만 쓴다.
+  // 목록보다 아래에 있었다면 목록 시작점까지만 끌어올린다.
   const adjustScroll = () => {
     if (window.scrollY > DEST_POS) {
       ScrollManager.go(DEST_POS)
     }
   }
   const selectCategory = useCallback(category => {
+    // 탭을 눌러도 스크롤은 건드리지 않는다. 보고 있던 위치를 그대로 둔다.
     setCategory(category)
-    adjustScroll()
     window.history.pushState(
       { category },
       '',

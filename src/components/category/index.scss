@@ -21,10 +21,37 @@
     cursor: pointer;
 
     div {
-      display: block;
-      padding: 14px 16px 16px 16px;
+      // 뱃지를 이름 오른쪽에 세로 가운데로 붙이기 위해 flex 로 둔다.
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 12px;
       font-size: 13px;
+      // 컨테이너가 line-height: 0 이라 그대로 두면 글자 높이가 0 이 된다.
+      line-height: 1.6;
       box-sizing: border-box;
+    }
+
+    // 글 개수 뱃지
+    .count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 19px;
+      height: 19px;
+      padding: 0 6px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1;
+      // 자릿수가 달라도 뱃지 폭이 흔들리지 않게 고정폭 숫자를 쓴다.
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0;
+      text-shadow: none;
+      transition: background-color 0.2s, color 0.2s;
+      // 테마 클래스가 붙기 전에도 보이도록 기본값을 둔다.
+      background-color: rgba(125, 125, 125, 0.16);
+      color: $middle-gray;
     }
   }
 

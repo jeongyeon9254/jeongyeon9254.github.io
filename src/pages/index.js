@@ -1,11 +1,11 @@
 import { graphql } from 'gatsby'
 import _ from 'lodash'
-import React, { useMemo, useRef, useEffect, useState } from 'react'
+import React, { useCallback, useMemo, useRef, useEffect, useState } from 'react'
 import { Bio } from '../components/bio'
 import { Category } from '../components/category'
 import { Contents } from '../components/contents'
 import { Head } from '../components/head'
-import { HOME_TITLE } from '../constants'
+import { CATEGORY_TYPE, HOME_TITLE } from '../constants'
 import { useCategory } from '../hooks/useCategory'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 import { useRenderedCount } from '../hooks/useRenderedCount'
@@ -28,10 +28,37 @@ export default ({ data, location }) => {
     () => _.uniq(posts.map(({ node }) => node.frontmatter.category)),
     []
   )
+  // 탭에 붙일 글 개수. All 은 전체 글 수를 그대로 쓴다.
+  const countByCategory = useMemo(
+    () =>
+      posts.reduce(
+        (acc, { node }) => {
+          const { category } = node.frontmatter
+          acc[category] = (acc[category] || 0) + 1
+          return acc
+        },
+        { [CATEGORY_TYPE.ALL]: posts.length }
+      ),
+    []
+  )
   const bioRef = useRef(null)
   const [DEST, setDEST] = useState(316)
-  const [count, countRef, increaseCount] = useRenderedCount()
+  const [count, countRef, increaseCount, resetCount] = useRenderedCount()
   const [category, selectCategory] = useCategory(DEST)
+
+  // 스크롤 핸들러는 마운트 시 한 번만 묶이므로 최신 카테고리를 ref 로 넘긴다.
+  const categoryRef = useRef(category)
+  useEffect(() => {
+    categoryRef.current = category
+  }, [category])
+
+  const handleSelectCategory = useCallback(
+    nextCategory => {
+      resetCount()
+      selectCategory(nextCategory)
+    },
+    [selectCategory]
+  )
 
   useEffect(
     tabRef => {
@@ -50,8 +77,11 @@ export default ({ data, location }) => {
   useScrollEvent(() => {
     const currentPos = window.scrollY + window.innerHeight
     const isTriggerPos = () => getDistance(currentPos) < BASE_LINE
+    // 전체 글 수가 아니라 지금 보고 있는 카테고리의 글 수와 비교해야
+    // 목록을 다 내려받은 뒤에도 계속 카운트가 올라가지 않는다.
     const doesNeedMore = () =>
-      posts.length > countRef.current * countOfInitialPost
+      (countByCategory[categoryRef.current] || 0) >
+      countRef.current * countOfInitialPost
 
     return EventManager.toFit(increaseCount, {
       dismissCondition: () => !isTriggerPos(),
@@ -66,7 +96,8 @@ export default ({ data, location }) => {
       <Category
         categories={categories}
         category={category}
-        selectCategory={selectCategory}
+        countByCategory={countByCategory}
+        selectCategory={handleSelectCategory}
       />
       <Contents
         posts={posts}
